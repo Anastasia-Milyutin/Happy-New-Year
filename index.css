@@ -1,0 +1,244 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kalnia", serif;
+  margin: 0;
+  background-color: #f7f7f7;
+  font-family: "Roboto", sans-serif;
+}
+
+.snow-toggle {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  gap: 40px;
+  border: 0;
+}
+
+.snow-toggle__label {
+  padding-bottom: 10px;
+}
+
+.snow-toggle__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.snow-toggle__text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(50% - 12px);
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+}
+
+.snow-toggle__control {
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  margin-right: 15px;
+}
+
+.snow-toggle__control:focus + .snow-toggle__text::before {
+  border-color: #2068ab;
+}
+
+.snow-toggle__control:checked + .snow-toggle__text::before {
+  background-color: #ffffff;
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    #ffffff 40%,
+    transparent 50%,
+    transparent 100%
+  );
+}
+
+.snow {
+  --animation-name: snowfall;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.snow__flake {
+  position: relative;
+  top: -1.5em;
+  color: #4a768f;
+  animation-name: var(--animation-name);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(calc(100vh + 1.5em));
+  }
+}
+
+.block-flex {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  position: absolute;
+  left: 0;
+}
+.ms {
+  z-index: 10;
+  font-family: "Kalnia", serif;
+  font-size: 100px;
+  font-weight: bolder;
+  color: #ff00c3;
+  position: absolute;
+}
+.msg {
+  top: 60%;
+  z-index: 10;
+  font-family: "Kalnia", serif;
+  font-size: 50px;
+  font-weight: bolder;
+  color: #33ff00;
+  position: absolute;
+}
+
+.firework {
+  position: absolute;
+  opacity: 0;
+  animation: show_fireworks 2s ease-in-out 5s forwards;
+}
+@keyframes show_fireworks {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cracker {
+  position: absolute;
+  width: 4px;
+  height: 80px;
+  transform-origin: 50% 100%;
+  overflow: hidden;
+}
+.cracker::before {
+  content: "";
+  background-color: gold;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  animation: fire 2s ease-in-out infinite;
+}
+@keyframes fire {
+  0% {
+    top: 100%;
+  }
+  25% {
+    top: 50%;
+  }
+  50% {
+    top: -25%;
+  }
+  75% {
+    top: -50%;
+  }
+  100% {
+    top: -50%;
+  }
+}
+.cracker:nth-child(1) {
+  transform: rotate(0deg) translateY(-15px);
+}
+.cracker:nth-child(2) {
+  transform: rotate(30deg) translateY(-15px);
+}
+.cracker:nth-child(3) {
+  transform: rotate(60deg) translateY(-15px);
+}
+.cracker:nth-child(4) {
+  transform: rotate(90deg) translateY(-15px);
+}
+.cracker:nth-child(5) {
+  transform: rotate(120deg) translateY(-15px);
+}
+.cracker:nth-child(6) {
+  transform: rotate(150deg) translateY(-15px);
+}
+.cracker:nth-child(7) {
+  transform: rotate(180deg) translateY(-15px);
+}
+.cracker:nth-child(8) {
+  transform: rotate(210deg) translateY(-15px);
+}
+.cracker:nth-child(9) {
+  transform: rotate(240deg) translateY(-15px);
+}
+.cracker:nth-child(10) {
+  transform: rotate(270deg) translateY(-15px);
+}
+.cracker:nth-child(11) {
+  transform: rotate(300deg) translateY(-15px);
+}
+.cracker:nth-child(12) {
+  transform: rotate(330deg) translateY(-15px);
+}
+#firework1 {
+  left: 25%;
+  top: 80%;
+  transform: scale(1);
+}
+#firework2 {
+  left: 40%;
+  top: 75%;
+  transform: scale(0.5);
+}
+#firework3 {
+  left: 80%;
+  top: 25%;
+  transform: scale(1.5);
+}
+
+@media (max-width: 500px) {
+  .logo {
+    width: 350px;
+  }
+  .ms {
+    left: 0;
+    font-size: 50px;
+  }
+  .msg {
+    top: 35%;
+    font-size: 30px;
+  }
+}
